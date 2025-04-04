@@ -9,8 +9,6 @@ export default function Home() {
 
   console.log("Привет")
 
-  const connector = new TonConnect();
-
   const [tonConnectUI] = useTonConnectUI();
 
   const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
