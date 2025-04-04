@@ -1,6 +1,7 @@
 'use client'
 import { useTonConnectUI } from "@tonconnect/ui-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { toNano } from '@ton/ton';
 
 import {Address} from "@ton/core"
 
@@ -70,6 +71,7 @@ export default function Home() {
     return `${tempAdress.slice(0, 4)}...${tempAdress.slice(-4)}`
   }
 
+  
   if (isLoading){
     return (
       <main className="flex min-h-screen flex-col items-center justify-center">
@@ -79,6 +81,19 @@ export default function Home() {
       </main>
     )
   }
+
+
+  console.log(tonWalletAddress)
+
+  const transaction = {
+    messages: [
+        {
+            address: "0:412410771DA82CBA306A55FA9E0D43C9D245E38133CB58F1457DFB8D5CD8892F", // destination address
+            amount: "20000000" //Toncoin in nanotons
+        }
+    ]
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
         <h1 className="text-4xl font-bold mb-8">TON Connect Demo</h1>
