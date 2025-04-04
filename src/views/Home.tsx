@@ -88,7 +88,7 @@ export default function Home() {
     messages: [
         {
             address: tonWalletAddress , // destination address
-            amount: "20000000" //Toncoin in nanotons
+            amount: "2000000" //Toncoin in nanotons
         }
     ]
   }
