@@ -1,3 +1,4 @@
+'use client'
 import { useTonConnectUI } from "@tonconnect/ui-react";
 import { useCallback, useEffect, useState } from "react";
 
