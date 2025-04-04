@@ -2,7 +2,6 @@
 import { SendTransactionRequest, useTonConnectUI } from "@tonconnect/ui-react";
 import { useCallback, useEffect, useState } from "react";
 import {Address} from "@ton/core";
-import TonConnect from '@tonconnect/sdk';
 
 
 export default function Home() {
