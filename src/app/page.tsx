@@ -1,9 +1,9 @@
 'use client'
 import { useTonConnectUI } from "@tonconnect/ui-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { toNano } from '@ton/ton';
-
 import {Address} from "@ton/core"
+
+console.log("dsa")
 
 export default function Home() {
 
@@ -86,9 +86,10 @@ export default function Home() {
   console.log(tonWalletAddress)
 
   const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 360,
     messages: [
         {
-            address: "0:412410771DA82CBA306A55FA9E0D43C9D245E38133CB58F1457DFB8D5CD8892F", // destination address
+            address: tonWalletAddress || "", // destination address
             amount: "20000000" //Toncoin in nanotons
         }
     ]
@@ -96,13 +97,16 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold mb-8">TON Connect Demo</h1>
+        <h1 className="text-4xl font-bold mb-8">Next.js ton Demo</h1>
         {tonWalletAddress ? (
-          <div className="flex flex-col items-center">
+          <div className="flex items-center flex-col gap-2">
             <p className="mb-4">Connected : {formatAdress(tonWalletAddress)}</p>
             <button 
             onClick={handleWalletAction} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               Disconnect Wallet
+            </button>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => tonConnectUI.sendTransaction(transaction)}>
+                Send transaction
             </button>
           </div>
         ) 
