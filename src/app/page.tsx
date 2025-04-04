@@ -1,6 +1,6 @@
 'use client'
-import { useTonConnectUI } from "@tonconnect/ui-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { SendTransactionRequest, useTonConnectUI } from "@tonconnect/ui-react";
+import { useCallback, useEffect, useState } from "react";
 import {Address} from "@ton/core"
 
 console.log("dsa")
@@ -89,7 +89,7 @@ export default function Home() {
     validUntil: Math.floor(Date.now() / 1000) + 360,
     messages: [
         {
-            address: tonWalletAddress || "", // destination address
+            address: tonWalletAddress , // destination address
             amount: "20000000" //Toncoin in nanotons
         }
     ]
@@ -105,7 +105,7 @@ export default function Home() {
             onClick={handleWalletAction} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               Disconnect Wallet
             </button>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => tonConnectUI.sendTransaction(transaction)}>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => tonConnectUI.sendTransaction(transaction as SendTransactionRequest)}>
                 Send transaction
             </button>
           </div>
